@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dairy Flat Airways Flight Booking
 
-## Getting Started
+Online flight booking system for 159.352 Advanced Web Development Assignment 2.
 
-First, run the development server:
+The application lets customers search scheduled flights from the Dairy Flat Airways network, reserve seats, view a booking invoice/confirmation, retrieve all confirmed bookings for a passenger, and cancel bookings by reference.
+
+## Deployment
+
+Vercel deployment URL: **TODO: add the public Vercel URL after deployment**
+
+## Tech Stack
+
+- Next.js 16 App Router
+- React 19
+- MongoDB Atlas
+- Tailwind CSS
+- Vercel
+
+## Environment Variables
+
+Create `.env.local` in the project root:
+
+```env
+MONGODB_URI=your_mongodb_atlas_connection_string
+DB_NAME=flight_booking
+```
+
+`DB_NAME` is optional. If it is not set, the app uses `flight_booking`.
+
+## Running Locally
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The schedule collection is seeded automatically the first time an API route is used. The current seed includes more than one week of real calendar dates and covers the Dairy Flat, Sydney, Rotorua, Great Barrier Island, Chatham Islands, and Lake Tekapo routes.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Test Data
 
-## Learn More
+The repository includes `randomnames.csv` and a helper script to load sample passengers/bookings into MongoDB.
 
-To learn more about Next.js, take a look at the following resources:
+First start the app or call an API route once so the flight schedules are seeded, then run:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run seed:test
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+You can also verify the CSV can be read with:
 
-## Deploy on Vercel
+```bash
+python test_csv_loading.py
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Useful Commands
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run dev
+npm run build
+npm run lint
+npm run seed:test
+```
+
+## Main Features
+
+- Landing page for Dairy Flat Airways
+- Flight search by origin, destination, and date range
+- Scheduled flight selection and booking
+- Seat capacity checks to prevent overbooking
+- Unique booking reference generation
+- Booking confirmation/invoice summary
+- Passenger booking lookup by name or email
+- Booking cancellation by passenger lookup or booking reference
+
+## API Routes
+
+- `GET /api/search` - search scheduled flights
+- `GET /api/schedules` - list scheduled flights
+- `POST /api/schedules` - create a booking
+- `GET /api/bookings` - retrieve confirmed passenger bookings
+- `DELETE /api/bookings` - cancel a booking by reference
