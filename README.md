@@ -4,6 +4,10 @@ Online flight booking system for 159.352 Advanced Web Development Assignment 2.
 
 The application lets customers search scheduled flights from the Dairy Flat Airways network, reserve seats, view a booking invoice/confirmation, retrieve all confirmed bookings for a passenger, and cancel bookings by reference.
 
+## Author
+Jiayi Zhang 23010534
+Yiwen Zhang 23010547
+
 ## Deployment
 
 Vercel deployment URL: **https://flightbooking111.vercel.app/**
