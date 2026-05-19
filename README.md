@@ -6,7 +6,8 @@ The application lets customers search scheduled flights from the Dairy Flat Airw
 
 ## Deployment
 
-Vercel deployment URL: **https://flightbooking111-jnfan6gv2-yiwenz161-9167s-projects.vercel.app**
+Vercel deployment URL: **https://flightbooking111.vercel.app/**
+            
 
 ## Tech Stack
 
